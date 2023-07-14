@@ -1,5 +1,7 @@
 import core.JsonExtractor;
+import enums.StatusCode;
 import io.restassured.response.Response;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import pojo.EmployeeResponse;
 import requests.EmployeeRequests;
@@ -16,10 +18,8 @@ class ExampleTests {
     @Test
     void createEmployeeTest() {
         Response response = new EmployeeRequests().createEmployee();
-        EmployeeResponse student = JsonExtractor.objectMapper(response.prettyPrint(), EmployeeResponse.class);
+        EmployeeResponse employeeResponse = JsonExtractor.objectMapper(response.prettyPrint(), EmployeeResponse.class);
+        Assertions.assertEquals(response.getStatusCode(), StatusCode.SUCCESS.getValue());
 
-        System.out.println(student.getData().getId());
-        System.out.println(student.getMessage());
-        System.out.println(response.getStatusCode());
     }
 }

@@ -1,16 +1,16 @@
 package core;
 
+import core.config.ConfigurationManager;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
 
 public class BaseRequest {
-    private static String baseUrl = "https://dummy.restapiexample.com/api/v1/";
 
     public RequestSpecification getRequestSpec() {
         return new RequestSpecBuilder()
-                .setBaseUri(baseUrl)
+                .setBaseUri(ConfigurationManager.configuration().getApiURL())
                 .setContentType(ContentType.JSON)
-                .build();
+                .build().log().all();
     }
 }
