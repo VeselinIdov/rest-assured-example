@@ -14,8 +14,7 @@ class ExampleTests {
 
     @Test
     void getEmployeeTest() {
-        Response employeeResponse = new EmployeeRequests().getAllEmployee();
-        Response employeeResponseWithParam = new EmployeeRequests().getAllEmployee(1);
+        Response employeeResponseWithParam = new EmployeeRequests().getAllEmployees("3");
         System.out.println(employeeResponseWithParam.prettyPrint());
     }
 
@@ -33,5 +32,25 @@ class ExampleTests {
         EmployeeResponse employeeResponse = JsonExtractor.objectMapper(response.prettyPrint(), EmployeeResponse.class);
         Assertions.assertEquals(response.getStatusCode(), StatusCode.SUCCESS.getValue());
         System.out.println(employeeResponse.getMessage());
+    }
+
+    @Test
+    void updateEmployeeTest() {
+        EmployeeRequestPOJO employeeRequest = new EmployeeRequestPOJO();
+        employeeRequest.setName(faker.name().firstName());
+        employeeRequest.setSalary(faker.number().digit());
+        employeeRequest.setAge(faker.number().digit());
+        employeeRequest.setAge(faker.number().digit());
+        employeeRequest.setAge(faker.number().digit());
+        employeeRequest.setAge(faker.number().digit());
+
+        Response response = new EmployeeRequests().updateEmployee(employeeRequest, "1");
+        System.out.println(response.statusCode());
+    }
+
+    @Test
+    void deleteEmployeeTest() {
+        Response response = new EmployeeRequests().deleteEmployeeById("1");
+        System.out.println(response.statusCode());
     }
 }
