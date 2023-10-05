@@ -11,8 +11,7 @@ class ExampleTests {
 
     @Test
     void getEmployeeTest() {
-        Response employeeResponseWithParam = new EmployeeRequests().getEmployeeById("3");
-        System.out.println(employeeResponseWithParam.prettyPrint());
+        new EmployeeRequests().getEmployees();
     }
 
     @Test

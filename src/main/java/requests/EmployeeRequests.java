@@ -11,7 +11,7 @@ public class EmployeeRequests extends BaseRequest {
     private static final String UPDATE_EMPLOYEE_PATH_WITH_PARAM = "update";
     private static final String DELETE_EMPLOYEE_PATH_WITH_PARAM = "delete";
 
-    public Response getEmployeeById() {
+    public Response getEmployees() {
         return this.getRequest(GET_EMPLOYEE_PATH);
     }
 

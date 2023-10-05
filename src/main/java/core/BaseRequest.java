@@ -17,53 +17,67 @@ public class BaseRequest {
     }
 
     public Response getRequest(String url, String param) {
-        return RestAssured
+        Response response = RestAssured
                 .given(getRequestSpec())
                 .pathParams("id", param)
                 .get(url);
+        LoggerUtils.logInfo(response.prettyPrint());
+        return response;
     }
 
     public Response getRequest(String url) {
-        return RestAssured
+        Response response = RestAssured
                 .given(getRequestSpec())
                 .get(url);
+        LoggerUtils.logInfo(response.prettyPrint());
+        return response;
     }
 
     public Response postRequest(String url, Object object) {
-        return RestAssured
+        Response response = RestAssured
                 .given(getRequestSpec())
                 .body(object)
                 .post(url);
+        LoggerUtils.logInfo(response.prettyPrint());
+        return response;
     }
 
     public Response postRequest(String url, Object object, String param) {
-        return RestAssured
+        Response response = RestAssured
                 .given(getRequestSpec())
                 .pathParams("id", param)
                 .body(object)
                 .post(url);
+        LoggerUtils.logInfo(response.prettyPrint());
+        return response;
     }
 
     public Response patchRequest(String url, Object object, String param) {
-        return RestAssured
+        Response response = RestAssured
                 .given(getRequestSpec())
                 .pathParams("id", param)
                 .body(object)
                 .patch(url);
+        LoggerUtils.logInfo(response.prettyPrint());
+        return response;
     }
 
     public Response putRequest(String url, Object object, String param) {
-        return RestAssured
+        Response response = RestAssured
                 .given(getRequestSpec())
                 .pathParams("id", param)
                 .body(object)
                 .put(url);
+        LoggerUtils.logInfo(response.prettyPrint());
+        return response;
     }
 
     public Response deleteRequest(String url, String param) {
-        return RestAssured
+        Response response = RestAssured
                 .given(getRequestSpec())
                 .pathParams("id", param)
                 .delete(url);
+        LoggerUtils.logInfo(response.prettyPrint());
+        return response;
     }
 }

@@ -13,6 +13,8 @@ public class JsonExtractor {
     @SneakyThrows
     public static <P> P objectMapper(String response, Class<P> cls) {
         ObjectMapper objectMapper = new ObjectMapper();
-        return objectMapper.readValue(response, cls);
+        P result = objectMapper.readValue(response, cls);
+        LoggerUtils.logInfo("Successfully deserialized the provided JSON into object!");
+        return result;
     }
 }
